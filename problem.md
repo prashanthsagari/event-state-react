@@ -1,6 +1,5 @@
-
 ## Objective
-This exercise is created to get hands on with creating multiple react components
+This exercise is created to get hands on with creating state events within components
 
 ## To Do
 - Fork the boilerplate
