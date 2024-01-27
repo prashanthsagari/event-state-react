@@ -1,13 +1,24 @@
-import React from "react";
+import React from 'react'
 import BodyContentComponent from "./BodyContentComponent";
 import './Component.css';
 
 class BodyComponent extends React.Component {
     // define BodyComponent constructor 
-    constructor() {}
+    constructor() {
+        super();
+        this.state = {
+            value: ''
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+
 
     //method to handle change event
-    handleChange() { }
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+    }
+
     render() {
         return (
             <div className="BodyComponent">
@@ -16,8 +27,10 @@ class BodyComponent extends React.Component {
                     <div>
                         <label>Body text:</label>
                         {/* Define Input field to take in data and set State value */}
-                        <input />
-                        
+                        <input type="text" className="form-control"
+                            onChange={this.handleChange} placeholder="Value" />
+
+
                         <p>State value: {this.state.value}</p>
                     </div>
                 </form>

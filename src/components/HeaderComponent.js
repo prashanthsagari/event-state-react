@@ -5,10 +5,23 @@ import './Component.css';
 
 class HeaderComponent extends React.Component {
     // Define Constructor
-    constructor(){}
+    constructor() {
+        super();
+        this.state = {
+            value: ''
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.changeInParent = this.changeInParent.bind(this);
+    }
 
     //Define handleChange method
-    handleChange() { }
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+    }
+
+    changeInParent(input) {
+        this.setState({ value: input });
+    }
 
     render() {
         return (
@@ -16,7 +29,7 @@ class HeaderComponent extends React.Component {
                 <h2> I am Header Component with title from child: {this.state.value}</h2>
                 <LogoComponent input={this.state.value}></LogoComponent>
                 {/* Define event to handle changes in ViewTitleComponent */}
-                <ViewTitleComponent input={this.state.value}></ViewTitleComponent>
+                <ViewTitleComponent handleChangeRef={this.changeInParent} input={this.state.value}></ViewTitleComponent>
             </div>
         );
     }
